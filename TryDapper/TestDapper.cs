@@ -15,15 +15,21 @@ namespace TryDapper
 
         public void Execute()
         {
-            CreatePlayer();
-            AddPlayer();
-            GetPlayers();
+            ExecuteAsync().Wait();
         }
-        public void CreatePlayer()
+
+        private async Task ExecuteAsync()
         {
-            _dapperConnect.CreatePlayer();
+            await CreatePlayer();
+            await AddPlayer();
+            await GetPlayersAsync();
         }
-        public void AddPlayer()
+
+        public async Task CreatePlayer()
+        {
+            await _dapperConnect.CreatePlayerAsync();
+        }
+        public async Task AddPlayer()
         {
             var listPlayer = new List<Player>()
             {
@@ -31,25 +37,36 @@ namespace TryDapper
                 new Player() { Name = "playerB", Age = 15 } ,
                 new Player() { Name = "playerC", Age = 25 } ,
             };
-            _dapperConnect.AddPlayer(listPlayer);
+            await _dapperConnect.AddPlayerAsync(listPlayer);
         }
-        public void GetPlayers()
+        public async Task GetPlayersAsync()
         {
-            var a = _dapperConnect.GetPlayer("playerA").FirstOrDefault() ?? new Player() { Name = "null player", Age = 0 };
+            var a = (await _dapperConnect.GetPlayerAsync("playerA"))
+                .FirstOrDefault() ?? new Player() { Name = "null player", Age = 0 };
             Console.WriteLine($"{a.Name}, {a.Age}");
-            var b = _dapperConnect.GetPlayer("playerB").FirstOrDefault() ?? new Player() { Name = "null player", Age = 0 };
+
+            var b = (await _dapperConnect.GetPlayerAsync("playerB"))
+                .FirstOrDefault() ?? new Player() { Name = "null player", Age = 0 };
             Console.WriteLine($"{b.Name}, {b.Age}");
+
+            var x = (await _dapperConnect.GetPlayersAsync()).ToList();
+            foreach(var c in x)
+            {
+                Console.WriteLine($"{c.Name}, {c.Age}");
+            }
+
             Console.ReadLine();
         }
     }
 
     public class DapperConnect
     {
-        private string DbPath => $@".\{DateTime.Now:yyyyMMddHHmmss}.sqlite";
+        private string DbPath { get; } = $@".\{DateTime.Now:yyyyMMddHHmmss}.sqlite";
+        //private string DbPath => $@".\{DateTime.Now:yyyyMMddHHmmss}.sqlite"; //time would change
         private string CnStr => $"data source={DbPath}";
-        public void CreatePlayer()
+        public Task CreatePlayerAsync()
         {
-            if (File.Exists(DbPath)) return;
+            if (File.Exists(DbPath)) return Task.CompletedTask;
 
             using var cn = new SQLiteConnection(CnStr);
             string sql = @"
@@ -57,21 +74,26 @@ CREATE TABLE Player(
     name TEXT,
     age INT
 );";
-            cn.Execute(sql);
+            return cn.ExecuteAsync(sql);
         }
 
-        public void AddPlayer(List<Player> listPlayer)
+        public Task AddPlayerAsync(List<Player> listPlayer)
         {
             using var cn = new SQLiteConnection(CnStr);
             string sql = @"INSERT INTO Player(name, age) VALUES(@name, @age);";
-            cn.Execute(sql, listPlayer);
+            return cn.ExecuteAsync(sql, listPlayer);
         }
-        public List<Player> GetPlayer(string name)
+        public Task<IEnumerable<Player>> GetPlayerAsync(string name)
         {
             using var cn = new SQLiteConnection(CnStr);
             string sql = @"SELECT * FROM Player WHERE name=@name;";
-            var result = cn.Query<Player>(sql, new { name }).ToList();
-            return result;
+            return cn.QueryAsync<Player>(sql, new { name });
+        }
+        public Task<IEnumerable<Player>> GetPlayersAsync()
+        {
+            using var cn = new SQLiteConnection(CnStr);
+            string sql = @"SELECT * FROM Player;";
+            return cn.QueryAsync<Player>(sql);
         }
 
     }
