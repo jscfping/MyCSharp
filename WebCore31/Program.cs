@@ -7,16 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TryAsync;
+using TryDapper;
 
 namespace WebCore31
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            var asyncTry = new TestAsync();
-            await asyncTry.ExecuteAsync();
-            //CreateHostBuilder(args).Build().Run();
+            var testDapper = new TestDapper();
+            testDapper.Execute();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

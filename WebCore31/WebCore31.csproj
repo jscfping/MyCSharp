@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TryAsync\TryAsync.csproj" />
+    <ProjectReference Include="..\TryDapper\TryDapper.csproj" />
   </ItemGroup>
 
 </Project>

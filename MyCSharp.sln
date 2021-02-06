@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCore31", "WebCore31\WebC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryAsync", "TryAsync\TryAsync.csproj", "{59E3DC1B-0336-4E6B-9C9C-10F877333847}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryDapper", "TryDapper\TryDapper.csproj", "{4299AE28-94B9-4D81-8EE2-6A59B1A5ACD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{59E3DC1B-0336-4E6B-9C9C-10F877333847}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E3DC1B-0336-4E6B-9C9C-10F877333847}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E3DC1B-0336-4E6B-9C9C-10F877333847}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4299AE28-94B9-4D81-8EE2-6A59B1A5ACD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4299AE28-94B9-4D81-8EE2-6A59B1A5ACD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4299AE28-94B9-4D81-8EE2-6A59B1A5ACD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4299AE28-94B9-4D81-8EE2-6A59B1A5ACD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
