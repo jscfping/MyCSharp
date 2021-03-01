@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "TryIdenti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAPI", "TryIdentityServer\ClientAPI\ClientAPI.csproj", "{F87B9DB9-D38B-4465-849D-6959BA867B65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientMVC", "TryIdentityServer\ClientMVC\ClientMVC.csproj", "{F2AC2129-DD9F-493A-95B4-40E3D38095E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{F87B9DB9-D38B-4465-849D-6959BA867B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F87B9DB9-D38B-4465-849D-6959BA867B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F87B9DB9-D38B-4465-849D-6959BA867B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2AC2129-DD9F-493A-95B4-40E3D38095E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2AC2129-DD9F-493A-95B4-40E3D38095E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2AC2129-DD9F-493A-95B4-40E3D38095E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2AC2129-DD9F-493A-95B4-40E3D38095E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{14869C64-E2DD-46B9-B4C2-8A41CEA5791E} = {D1D87954-53E2-4EA6-8CAA-F68900402A22}
 		{F87B9DB9-D38B-4465-849D-6959BA867B65} = {D1D87954-53E2-4EA6-8CAA-F68900402A22}
+		{F2AC2129-DD9F-493A-95B4-40E3D38095E8} = {D1D87954-53E2-4EA6-8CAA-F68900402A22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0256506E-F0AE-466B-A320-65352FC0AC1D}
