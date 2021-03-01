@@ -1,4 +1,5 @@
 ﻿using ClientMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,6 +22,16 @@ namespace ClientMVC.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        [Authorize]
+        public Task<string> Secret()
+        {
+            return Task.FromResult("secret!");
+        }
+
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
 
         public IActionResult Privacy()
