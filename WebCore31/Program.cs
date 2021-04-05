@@ -15,9 +15,9 @@ namespace WebCore31
     {
         public static void Main(string[] args)
         {
-            var testDapper = new TestDapper();
-            testDapper.Execute();
-
+            //var testDapper = new TestDapper();
+            //testDapper.Execute();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
