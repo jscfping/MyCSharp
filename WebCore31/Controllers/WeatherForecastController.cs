@@ -19,10 +19,12 @@ namespace WebCore31.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly AppSetting _appSetting;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IOptions<AppSetting> appSettings)
         {
             _logger = logger;
+            _appSetting = appSettings.Value;
         }
 
         [HttpGet]
@@ -36,6 +38,11 @@ namespace WebCore31.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpGet("AppSettingValue")]
+        public Task<string> AppSettingValue()
+        {
+            return Task.FromResult(_appSetting.MyValue);
         }
     }
     public class WeatherForecast
