@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework35
+namespace Framework35.Utils
 {
     public class DefaultInterfaceMethods
     {
