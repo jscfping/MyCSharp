@@ -29,13 +29,46 @@ namespace Framework46
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.BtnToRunTask = new System.Windows.Forms.Button();
+            this.BtnCount = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // BtnToRunTask
+            // 
+            this.BtnToRunTask.Location = new System.Drawing.Point(13, 13);
+            this.BtnToRunTask.Name = "BtnToRunTask";
+            this.BtnToRunTask.Size = new System.Drawing.Size(115, 23);
+            this.BtnToRunTask.TabIndex = 0;
+            this.BtnToRunTask.Text = "BtnToRunTask";
+            this.BtnToRunTask.UseVisualStyleBackColor = true;
+            this.BtnToRunTask.Click += new System.EventHandler(this.BtnToRunTask_Click);
+            // 
+            // BtnCount
+            // 
+            this.BtnCount.Location = new System.Drawing.Point(152, 13);
+            this.BtnCount.Name = "BtnCount";
+            this.BtnCount.Size = new System.Drawing.Size(75, 23);
+            this.BtnCount.TabIndex = 1;
+            this.BtnCount.UseVisualStyleBackColor = true;
+            this.BtnCount.Click += new System.EventHandler(this.BtnCount_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnCount);
+            this.Controls.Add(this.BtnToRunTask);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button BtnToRunTask;
+        private System.Windows.Forms.Button BtnCount;
     }
 }
 
