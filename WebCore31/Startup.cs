@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Core31.Library.Services.Redis;
 
 namespace WebCore31
 {
@@ -47,6 +48,7 @@ namespace WebCore31
                 c.IncludeXmlComments(xmlPath);
             });
 
+            services.AddSingleton<IRedisService>(sp => new RedisService(Environment.GetEnvironmentVariable("RedisConnectString")));
 
         }
 
