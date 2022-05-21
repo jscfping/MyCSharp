@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Core31.Library.Services.Redis;
+using WebCore31.Middlewares;
 
 namespace WebCore31
 {
@@ -72,6 +73,8 @@ namespace WebCore31
             }
 
             app.UseRouting();
+
+            app.UseMiddleware<HandleExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
