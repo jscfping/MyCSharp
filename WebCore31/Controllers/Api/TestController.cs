@@ -2,16 +2,14 @@ using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace WebCore31.Controllers
+namespace WebCore31.Controllers.ApiDevelopment
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ApiController : ControllerBase
+    public class TestController : ApiControllerBase
     {
         private readonly AppSetting _appSetting;
         private readonly IRedisService _redisService;
 
-        public ApiController(IOptions<AppSetting> appSettings, IRedisService redisService)
+        public TestController(IOptions<AppSetting> appSettings, IRedisService redisService)
         {
             _appSetting = appSettings.Value;
             _redisService = redisService;
