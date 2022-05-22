@@ -1,6 +1,8 @@
 using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using WebCore31.Filters.Action;
+using WebCore31.Filters.Auth;
 
 namespace WebCore31.Controllers.ApiDevelopment
 {
@@ -34,6 +36,28 @@ namespace WebCore31.Controllers.ApiDevelopment
         {
             return _redisService.Get(databaseNumber, key);
         }
+
+        /// <summary>
+        /// curl -X GET "http://localhost:5000/api/Test/User" -b "User=Tester" -i
+        /// </summary>
+        [HttpGet("User")]
+        [AuthUser]
+        public string TestAuthUser()
+        {
+            return "hello User!";
+        }
+
+
+        /// <summary>
+        /// curl -X GET "http://localhost:5000/api/Test/Vip" -b "VIP=Super" -i
+        /// </summary>
+        [HttpGet("Vip")]
+        [VIPNeed]
+        public string TestVip()
+        {
+            return "hello VIP!";
+        }
+
     }
 
 }
