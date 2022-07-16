@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Core31.Library.Services.Redis;
 using WebCore31.Middlewares;
+using WebCore31.Hubs;
 
 namespace WebCore31
 {
@@ -51,6 +52,10 @@ namespace WebCore31
 
             services.AddSingleton<IRedisService>(sp => new RedisService(Environment.GetEnvironmentVariable("RedisConnectString")));
 
+
+            services.AddMemoryCache();
+            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,9 +77,11 @@ namespace WebCore31
                 });
             }
 
-            app.UseRouting();
-
             app.UseMiddleware<HandleExceptionMiddleware>();
+
+            app.UseStaticFiles();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
@@ -84,6 +91,7 @@ namespace WebCore31
                 // });
 
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/ChatHub");
             });
         }
     }
