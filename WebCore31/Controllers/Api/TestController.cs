@@ -1,3 +1,4 @@
+using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -10,11 +11,13 @@ namespace WebCore31.Controllers.ApiDevelopment
     {
         private readonly AppSetting _appSetting;
         private readonly IRedisService _redisService;
+        private readonly IRabbitMQPublishService _rabbitMQPublishService;
 
-        public TestController(IOptions<AppSetting> appSettings, IRedisService redisService)
+        public TestController(IOptions<AppSetting> appSettings, IRedisService redisService, IRabbitMQPublishService rabbitMQPublishService)
         {
             _appSetting = appSettings.Value;
             _redisService = redisService;
+            _rabbitMQPublishService = rabbitMQPublishService;
         }
 
         [HttpGet("MyValue")]
@@ -56,6 +59,13 @@ namespace WebCore31.Controllers.ApiDevelopment
         public string TestVip()
         {
             return "hello VIP!";
+        }
+
+
+        [HttpPost("RabbitMQ")]
+        public void RabbitMQSend(string message)
+        {
+            _rabbitMQPublishService.SendMessage(message);
         }
 
     }

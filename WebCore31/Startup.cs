@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Core31.Library.Services.Redis;
 using WebCore31.Middlewares;
 using WebCore31.Hubs;
+using Core31.Library.Services.RabbitMQ;
 
 namespace WebCore31
 {
@@ -56,10 +57,21 @@ namespace WebCore31
             services.AddMemoryCache();
             services.AddSignalR();
 
+            var rabbitMQServiceParas = new RabbitMQServiceParas(
+                            hostName: Environment.GetEnvironmentVariable("RabbitMQHostName"),
+                            userName: Environment.GetEnvironmentVariable("RabbitMQUserName"),
+                            password: Environment.GetEnvironmentVariable("RabbitMQPassword"),
+                            queueName: Environment.GetEnvironmentVariable("RabbitMQQueueName")
+                        );
+
+            services.AddSingleton<RabbitMQServiceParas>(rabbitMQServiceParas);
+            services.AddSingleton<IRabbitMQPublishService, RabbitMQPublishService>();
+            services.AddSingleton(sp => new RabbitMQSubscribeService(sp, rabbitMQServiceParas, RabbitMQHub.Subscribe));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -92,6 +104,11 @@ namespace WebCore31
 
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/ChatHub");
+                endpoints.MapHub<RabbitMQHub>("/RabbitMQHub");
+            });
+            
+            lifetime.ApplicationStarted.Register(() => {
+                app.ApplicationServices.GetService<RabbitMQSubscribeService>();
             });
         }
     }

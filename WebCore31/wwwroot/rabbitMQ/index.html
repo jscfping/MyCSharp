@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RabbitMQ</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <script src="../libs/SignalR/signalr_3.1.14.js"></script>
+    <script>
+
+
+        const chatHubCon = {
+            _connection: null,
+            startAsync: async function () {
+                this._connection = new signalR.HubConnectionBuilder()
+                    .withUrl(`../RabbitMQHub`)
+                    .build();
+
+                this._connection.on("ReceiveMessage", message => {
+                    console.log(message);
+                })
+
+                await this._connection.start()
+                    .then(() => {
+
+                    })
+                    .catch(e => {
+                        console.error(e);
+                    });
+            }
+        };
+        chatHubCon.startAsync();
+
+    </script>
+</body>
+
+</html>
