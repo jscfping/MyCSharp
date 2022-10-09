@@ -15,6 +15,8 @@ using Core31.Library.Services.Redis;
 using WebCore31.Middlewares;
 using WebCore31.Hubs;
 using Core31.Library.Services.RabbitMQ;
+using Core31.Library.Models.EFCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebCore31
 {
@@ -68,6 +70,10 @@ namespace WebCore31
             services.AddSingleton<IRabbitMQPublishService, RabbitMQPublishService>();
             services.AddSingleton(sp => new RabbitMQSubscribeService(sp, rabbitMQServiceParas, RabbitMQHub.Subscribe));
 
+            services.AddDbContext<TodoItemContext>(options =>
+                options.UseMySQL(Environment.GetEnvironmentVariable("MySQLConnectString"))
+            );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,7 +112,7 @@ namespace WebCore31
                 endpoints.MapHub<ChatHub>("/ChatHub");
                 endpoints.MapHub<RabbitMQHub>("/RabbitMQHub");
             });
-            
+
             // lifetime.ApplicationStarted.Register(() => {
             //     app.ApplicationServices.GetService<RabbitMQSubscribeService>();
             // });
