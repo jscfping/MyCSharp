@@ -113,9 +113,9 @@ namespace WebCore31
                 endpoints.MapHub<RabbitMQHub>("/RabbitMQHub");
             });
 
-            // lifetime.ApplicationStarted.Register(() => {
-            //     app.ApplicationServices.GetService<RabbitMQSubscribeService>();
-            // });
+            lifetime.ApplicationStarted.Register(() => {
+                app.ApplicationServices.GetService<RabbitMQSubscribeService>();
+            });
         }
     }
 }

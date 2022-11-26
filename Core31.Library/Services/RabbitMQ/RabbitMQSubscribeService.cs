@@ -10,7 +10,7 @@ namespace Core31.Library.Services.RabbitMQ
 {
     public class RabbitMQSubscribeService
     {
-        public RabbitMQSubscribeService(IServiceProvider serviceProvider, RabbitMQServiceParas paras, Action<IServiceProvider, object, BasicDeliverEventArgs> act)
+        public RabbitMQSubscribeService(IServiceProvider serviceProvider, RabbitMQServiceParas paras, Action<IServiceProvider, string> act)
         {
             var factory = new ConnectionFactory()
             {
@@ -27,7 +27,13 @@ namespace Core31.Library.Services.RabbitMQ
 
             var consumer = new EventingBasicConsumer(channel);
 
-            consumer.Received += (sender, args) => act(serviceProvider, sender, args);
+            consumer.Received += (sender, args) =>
+            {
+                var body = args.Body.ToArray();
+                var message = Encoding.UTF8.GetString(body);
+                Console.WriteLine($"received: {message}");
+                act(serviceProvider, message);
+            };
             // consumer.Received += (model, ea) =>
             // {
             //     var body = ea.Body.ToArray();
