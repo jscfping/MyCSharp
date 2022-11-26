@@ -116,7 +116,7 @@ namespace WebCore31
                 {
                     //c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 
-                      foreach (var description in apiVersionprovider.ApiVersionDescriptions)
+                    foreach (var description in apiVersionprovider.ApiVersionDescriptions)
                     {
                         c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                     }
@@ -141,9 +141,13 @@ namespace WebCore31
                 endpoints.MapHub<RabbitMQHub>("/RabbitMQHub");
             });
 
-            lifetime.ApplicationStarted.Register(() => {
-                app.ApplicationServices.GetService<RabbitMQSubscribeService>();
-            });
+            if (Environment.GetEnvironmentVariable("IsRabbitMQSubscribeServiceRun") == "true")
+            {
+                lifetime.ApplicationStarted.Register(() =>
+                {
+                    app.ApplicationServices.GetService<RabbitMQSubscribeService>();
+                });
+            }
         }
     }
 }
