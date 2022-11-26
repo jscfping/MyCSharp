@@ -17,6 +17,9 @@ using WebCore31.Hubs;
 using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Models.EFCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using WebCore31.Swagger;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace WebCore31
 {
@@ -40,12 +43,12 @@ namespace WebCore31
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Swagger",
-                    Description = "A simple example ASP.NET Core Web API",
-                });
+                // c.SwaggerDoc("v1", new OpenApiInfo
+                // {
+                //     Version = "v1",
+                //     Title = "Swagger",
+                //     Description = "A simple example ASP.NET Core Web API",
+                // });
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -74,10 +77,30 @@ namespace WebCore31
                 options.UseMySQL(Environment.GetEnvironmentVariable("MySQLConnectString"))
             );
 
+            services.AddApiVersioning(config =>
+            {
+                config.DefaultApiVersion = new ApiVersion(2, 1);
+                config.AssumeDefaultVersionWhenUnspecified = true;
+                config.ReportApiVersions = true;
+            });
+
+            services.AddVersionedApiExplorer(setup =>
+            {
+                setup.GroupNameFormat = "'v'VVV";
+                setup.SubstituteApiVersionInUrl = true;
+            });
+
+            services.ConfigureOptions<SwaggerVersion>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            IHostApplicationLifetime lifetime,
+            IApiVersionDescriptionProvider apiVersionprovider)
         {
             if (env.IsDevelopment())
             {
@@ -91,7 +114,12 @@ namespace WebCore31
                 // specifying the Swagger JSON endpoint.
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    //c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+
+                      foreach (var description in apiVersionprovider.ApiVersionDescriptions)
+                    {
+                        c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                    }
                 });
             }
 
