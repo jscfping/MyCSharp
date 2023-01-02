@@ -1,3 +1,4 @@
+using Core31.Library.Authentications.JwtTestUser;
 using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,10 @@ namespace WebCore31.Controllers.ApiDevelopment
 {
     public class AuthController : ApiControllerBase
     {
-        public AuthController()
+        private readonly IJwtTestUserAuth _jwtTestUserAuth;
+        public AuthController(IJwtTestUserAuth jwtTestUserAuth)
         {
-
+            _jwtTestUserAuth = jwtTestUserAuth;
         }
 
         /// <summary>
@@ -35,6 +37,19 @@ namespace WebCore31.Controllers.ApiDevelopment
         public string TestVip()
         {
             return "hello VIP!";
+        }
+
+        [HttpGet("GetJwtFromJwtUser")]
+        public string CreateJwtUser(int id, string userName)
+        {
+            return _jwtTestUserAuth.GetJwt(id, userName);
+        }
+
+        [HttpGet("AuthJwtUser")]
+        [JwtTestUserAuth]
+        public IJwtTestUser GetJwtUser()
+        {
+            return _jwtTestUserAuth.GetJwtTestUser();
         }
     }
 

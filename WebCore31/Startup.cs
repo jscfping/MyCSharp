@@ -20,6 +20,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using WebCore31.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Core31.Library.Services.System;
+using Core31.Library.Authentications.JwtTestUser;
+using Core31.Library;
 
 namespace WebCore31
 {
@@ -92,6 +95,12 @@ namespace WebCore31
 
             services.ConfigureOptions<SwaggerVersion>();
 
+            services.AddSingleton<ISystemService, SystemService>();
+            services.AddHttpContextAccessor();
+            services.AddScoped<IJwtTestUserAuth, JwtTestUserAuth>();
+            services.AddSingleton(new Core31LibraryParas(
+                jwtTestUserKey: Environment.GetEnvironmentVariable("JwtTestUserAuthKey"))
+            );
 
         }
 
