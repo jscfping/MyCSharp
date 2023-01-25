@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Core31.Library.Services.System;
 using Core31.Library.Authentications.JwtTestUser;
 using Core31.Library;
+using Core31.Library.Services.User;
 
 namespace WebCore31
 {
@@ -101,6 +102,8 @@ namespace WebCore31
             services.AddSingleton(new Core31LibraryParas(
                 jwtTestUserKey: Environment.GetEnvironmentVariable("JwtTestUserAuthKey"))
             );
+
+            services.AddScoped<IUserService, UserInMemoryService>();
 
         }
 

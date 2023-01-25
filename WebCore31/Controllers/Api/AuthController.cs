@@ -1,3 +1,4 @@
+using System;
 using Core31.Library.Authentications.JwtTestUser;
 using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Services.Redis;
@@ -39,6 +40,8 @@ namespace WebCore31.Controllers.ApiDevelopment
             return "hello VIP!";
         }
 
+
+        [Obsolete]
         [HttpGet("GetJwtFromJwtUser")]
         public string CreateJwtUser(int id, string userName)
         {
