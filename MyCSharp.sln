@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCore31", "WebCore31\WebCore31.csproj", "{D476CA13-BE29-48DA-A4FE-6F0D1B2E0182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebNet6", "WebCore31\WebNet6.csproj", "{D476CA13-BE29-48DA-A4FE-6F0D1B2E0182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core31.Library", "Core31.Library\Core31.Library.csproj", "{68A30668-FB7F-4EC1-B5FB-36FC3D8745DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core31.Library", "Core31.Library\Core31.Library.csproj", "{68A30668-FB7F-4EC1-B5FB-36FC3D8745DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core31.Library.Test", "Core31.Library.Test\Core31.Library.Test.csproj", "{88DB610C-2761-4945-B160-4B706D87DC03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core31.Library.Test", "Core31.Library.Test\Core31.Library.Test.csproj", "{88DB610C-2761-4945-B160-4B706D87DC03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D476CA13-BE29-48DA-A4FE-6F0D1B2E0182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +55,11 @@ Global
 		{88DB610C-2761-4945-B160-4B706D87DC03}.Release|x64.Build.0 = Release|Any CPU
 		{88DB610C-2761-4945-B160-4B706D87DC03}.Release|x86.ActiveCfg = Release|Any CPU
 		{88DB610C-2761-4945-B160-4B706D87DC03}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C864596E-4D68-449F-B0DF-AD27AE2A96AE}
 	EndGlobalSection
 EndGlobal

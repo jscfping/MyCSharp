@@ -12,20 +12,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Core31.Library.Services.Redis;
-using WebCore31.Middlewares;
-using WebCore31.Hubs;
+using WebNet6.Middlewares;
+using WebNet6.Hubs;
 using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Models.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using WebCore31.Swagger;
+using WebNet6.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Core31.Library.Services.System;
 using Core31.Library.Authentications.JwtTestUser;
 using Core31.Library;
 using Core31.Library.Services.User;
 
-namespace WebCore31
+namespace WebNet6
 {
     public class Startup
     {

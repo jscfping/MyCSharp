@@ -6,7 +6,7 @@ using Core31.Library.Exceptions;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace WebCore31.Hubs
+namespace WebNet6.Hubs
 {
     public class ChatHub : Hub
     {

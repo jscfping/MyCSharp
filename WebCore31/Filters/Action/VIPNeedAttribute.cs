@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core31.Library.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace WebCore31.Filters.Action
+namespace WebNet6.Filters.Action
 {
     public class VIPNeedAttribute : Attribute, IAuthorizationFilter
     {

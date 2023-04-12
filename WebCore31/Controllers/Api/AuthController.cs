@@ -4,10 +4,10 @@ using Core31.Library.Services.RabbitMQ;
 using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using WebCore31.Filters.Action;
-using WebCore31.Filters.Auth;
+using WebNet6.Filters.Action;
+using WebNet6.Filters.Auth;
 
-namespace WebCore31.Controllers.ApiDevelopment
+namespace WebNet6.Controllers.ApiDevelopment
 {
     public class AuthController : ApiControllerBase
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebCore31.Controllers.Api.ApiParams.User
+namespace WebNet6.Controllers.Api.ApiParams.User
 {
     public class LoginUserAPIParam
     {

@@ -1,4 +1,4 @@
-namespace WebCore31
+namespace WebNet6
 {
     public class AppSetting
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace WebCore31.Controllers.Api.V1
+namespace WebNet6.Controllers.Api.V1
 {
 
     [ApiVersion("1.0")]

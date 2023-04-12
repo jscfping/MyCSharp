@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 
-namespace WebCore31.Middlewares
+namespace WebNet6.Middlewares
 {
     public class HandleExceptionMiddleware
     {

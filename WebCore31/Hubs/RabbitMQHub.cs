@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.SignalR;
 
-namespace WebCore31.Hubs
+namespace WebNet6.Hubs
 {
     public class RabbitMQHub : Hub
     {

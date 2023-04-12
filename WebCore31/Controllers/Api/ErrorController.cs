@@ -4,7 +4,7 @@ using Core31.Library.Services.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace WebCore31.Controllers.Api
+namespace WebNet6.Controllers.Api
 {
     public class ErrorController : ApiControllerBase
     {
