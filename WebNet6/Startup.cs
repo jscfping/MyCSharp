@@ -24,6 +24,8 @@ using Core31.Library.Services.System;
 using Core31.Library.Authentications.JwtTestUser;
 using Core31.Library;
 using Core31.Library.Services.User;
+using Net6.Library;
+using Net6.Library.Services.MessageBoard;
 
 namespace WebNet6
 {
@@ -105,6 +107,9 @@ namespace WebNet6
 
             services.AddScoped<IUserService, UserInMemoryService>();
 
+
+            services.AddSingleton(new Net6Setting(Environment.GetEnvironmentVariable("PostgresConnectionString")));
+            services.AddScoped<IMessageBoardService, MessageBoardService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
