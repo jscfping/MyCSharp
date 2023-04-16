@@ -41,5 +41,8 @@ CREATE TABLE TodoApp.TodoItem (
 );
 ```
 
-
+# PostgreSQL
+```
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d postgres:15.2-alpine3.17
+```
 
