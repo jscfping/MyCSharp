@@ -26,6 +26,9 @@ using Core31.Library;
 using Core31.Library.Services.User;
 using Net6.Library;
 using Net6.Library.Services.MessageBoard;
+using System.Diagnostics;
+using WebNet6.EventListeners;
+using Microsoft.Extensions.Logging;
 
 namespace WebNet6
 {
@@ -156,6 +159,14 @@ namespace WebNet6
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/ChatHub");
                 endpoints.MapHub<RabbitMQHub>("/RabbitMQHub");
+            });
+
+            var diagnosticSource = app.ApplicationServices.GetRequiredService<DiagnosticListener>();
+            var badRequestListener = new BadRequestEventListener(diagnosticSource, (badRequestExceptionFeature) =>
+            {
+                using var logScope = app.ApplicationServices.CreateScope();
+                var logger = logScope.ServiceProvider.GetService<ILogger<BadRequestEventListener>>();
+                logger.LogError(badRequestExceptionFeature.Error, "Bad request received");
             });
 
             if (Environment.GetEnvironmentVariable("IsRabbitMQSubscribeServiceRun") == "true")
