@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core31.Library.Test", "Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebNet6", "WebNet6\WebNet6.csproj", "{79DA15C8-E5D4-4497-8858-09822AF5CCAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net6.Library", "Net6.Library\Net6.Library.csproj", "{96484EBE-89FE-473F-9C0C-A1C3C7485495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net6.Library", "Net6.Library\Net6.Library.csproj", "{96484EBE-89FE-473F-9C0C-A1C3C7485495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GCPTest", "GCPTest", "{6DA1F5C5-37F8-4BC7-9DAF-79DB610C3391}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PubSub", "GCPTest\PubSub\PubSub.csproj", "{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,9 +73,24 @@ Global
 		{96484EBE-89FE-473F-9C0C-A1C3C7485495}.Release|x64.Build.0 = Release|Any CPU
 		{96484EBE-89FE-473F-9C0C-A1C3C7485495}.Release|x86.ActiveCfg = Release|Any CPU
 		{96484EBE-89FE-473F-9C0C-A1C3C7485495}.Release|x86.Build.0 = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|x64.Build.0 = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Debug|x86.Build.0 = Debug|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|x64.ActiveCfg = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|x64.Build.0 = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|x86.ActiveCfg = Release|Any CPU
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B771FDD4-C494-4313-BF4C-EBC59F82E0C2} = {6DA1F5C5-37F8-4BC7-9DAF-79DB610C3391}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C864596E-4D68-449F-B0DF-AD27AE2A96AE}
